@@ -11,14 +11,8 @@ int main() {
 }
 
 void shift_element(int* arr, int i) {
-    int temp = 0, temp2 = 0;
-
-    for (int item = 0; item < i; ++item)
-    {
-        temp = *(arr + item + 1);
-        *(arr + item + 1) = *(arr + item);
-        temp2 = temp;
-    }
+    for (int item = i; item > 0; --item)
+        *(arr + item) = *(arr + item - 1);
 }
 
 void insertion_sort(int* arr, int len) {
