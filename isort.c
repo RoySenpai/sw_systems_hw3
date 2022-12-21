@@ -7,6 +7,16 @@ void shift_element(int* arr, int i);
 void insertion_sort(int* arr, int len);
 
 int main() {
+    int arr[ARR_SIZE] = { 0 };
+
+    for (int i = 0; i < ARR_SIZE; ++i)
+        scanf("%d", &arr[i]);
+
+    insertion_sort(arr, ARR_SIZE);
+
+    for (int i = 0; i < ARR_SIZE; ++i)
+        printf("%d%c", arr[i], ((i == ARR_SIZE - 1) ? '\n':','));
+
     return 0;
 }
 
@@ -20,7 +30,8 @@ void insertion_sort(int* arr, int len) {
     {
         int key = *(arr + i), j = i-1;
 
-        while (--j >= 0 && *(arr + j) > key);
+        while (j >= 0 && *(arr + j) > key)
+            --j;
 
         shift_element(arr+j, i-j);
 
