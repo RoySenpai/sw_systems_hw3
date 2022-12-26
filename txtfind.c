@@ -1,14 +1,40 @@
+/*
+ *  Software Systems Course Assignment 3
+ *  Copyright (C) 2022  Roy Simanovich
+
+ *  This program is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
+*/
+
 #include <stdio.h>
 #include <string.h>
 
+/* Max characters per line. */
 #define LINE 256
+
+/* Max characters per word. */
 #define WORD 30
 
 int get_line(char s[]);
+
 int getword(char w[]);
+
 int substring(char * str1, char * str2);
+
 int similar(char *s, char *t, int n);
+
 void print_lines(char * str);
+
 void print_similar_words(char * str);
 
 int main() {
@@ -26,6 +52,16 @@ int main() {
     return 0;
 }
 
+/*
+ * Function:  get_line
+ * --------------------
+ * Reads one line from an input.
+ *
+ *  s: an array where we put the line.
+ * 
+ *  return: total characters read by the function,
+ *              max of LINE characters.
+ */
 int get_line(char s[]) {
     int i = 0;
 
@@ -49,6 +85,16 @@ int get_line(char s[]) {
     return i;
 }
 
+/*
+ * Function:  getword
+ * --------------------
+ * Reads one word from an input.
+ *
+ *  s: an array where we put the word.
+ * 
+ *  return: total characters read by the function,
+ *              max of WORD characters.
+ */
 int getword(char w[]) {
     int i = 0;
 
@@ -73,6 +119,18 @@ int getword(char w[]) {
     return i;
 }
 
+/*
+ * Function:  substring
+ * --------------------
+ * Checks if a string is a substring of another string.
+ *
+ *  str1: a string.
+ * 
+ *  str2: substring to check.
+ * 
+ *  return: 1 if str2 is a substring of str1,
+ *              0 elsewise.
+ */
 int substring(char * str1, char * str2) {
     int str1_len = strlen(str1), str2_len = strlen(str2), matchCount, i, j;
 
@@ -93,6 +151,21 @@ int substring(char * str1, char * str2) {
     return 0;
 }
 
+/*
+ * Function:  similar
+ * --------------------
+ * Checks if a string is similar to other string,
+ *  by deleting n characters.
+ *
+ *  s: a string.
+ * 
+ *  t: another string.
+ * 
+ *  n: number of characters to remove from s.
+ * 
+ *  return: 1 if s and t are similar,
+ *              0 elsewise.
+ */
 int similar(char *s, char *t, int n) {
     int s_len = strlen(s), t_len = strlen(t), i = 0, j = 0;
 
@@ -108,6 +181,13 @@ int similar(char *s, char *t, int n) {
     return (t_len == j);
 }
 
+/*
+ * Function:  print_lines
+ * --------------------
+ * Prints all the lines that contains a substring of the word.
+ *
+ *  str: a word.
+ */
 void print_lines(char * str) {
     char line[LINE] = { 0 };
 
@@ -118,6 +198,14 @@ void print_lines(char * str) {
     }
 }
 
+/*
+ * Function:  print_similar_words
+ * --------------------
+ * Prints all the words that are similar to the word,
+ *  by at most 1 character deletion.
+ *
+ *  str: a word.
+ */
 void print_similar_words(char * str) {
     char word[WORD] = { 0 };
 
