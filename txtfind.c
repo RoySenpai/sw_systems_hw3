@@ -73,7 +73,7 @@ int get_line(char s[]) {
             break;
         }
 
-        if (s[i] == '\n')
+        if (s[i] == '\n' || s[i] == '\r')
         {
             s[i] = '\0';
             break;
@@ -106,7 +106,7 @@ int getword(char w[]) {
             break;
         }
 
-        if (w[i] == '\n' || w[i] == '\t' || w[i] == ' ')
+        if (w[i] == '\n' || w[i] == '\t' || w[i] == ' ' || w[i] == '\r')
         {
             w[i] = '\0';
             break;
