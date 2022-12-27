@@ -86,8 +86,8 @@ int get_line(char s[]) {
     
     else if (s[i] == '\r')
     {
+        s[i++] = '\n';
         s[i] = '\0';
-        ++i;
     }
 
     return i;
