@@ -85,10 +85,7 @@ int get_line(char s[]) {
 
     
     else if (s[i] == '\r')
-    {
-        s[i++] = '\n';
-        s[i] = '\0';
-    }
+        s[i++] = '\0';
 
     return i;
 }
@@ -202,7 +199,7 @@ void print_lines(char * str) {
     while(get_line(line) != 0)
     {
         if (substring(line, str) != 0)
-            printf("%s\n",line);
+            printf("%s\n", line);
     }
 }
 
