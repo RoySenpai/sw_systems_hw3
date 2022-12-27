@@ -78,15 +78,17 @@ int get_line(char s[]) {
             s[i] = '\0';
             break;
         }
-
-        else if (s[i] == '\r')
-        {
-            s[i++] = '\0';
-            break;
-        }
     }
+
     if (i == LINE)
         s[i - 1] = '\0';
+
+    
+    else if (s[i] == '\r')
+    {
+        s[i] = '\0';
+        ++i;
+    }
 
     return i;
 }
