@@ -201,8 +201,6 @@ void print_lines(char * str) {
         if (substring(line, str) != 0)
             printf("%s\n", line);
     }
-
-    printf("\n");
 }
 
 /*
