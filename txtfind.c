@@ -38,7 +38,7 @@ void print_lines(char * str);
 void print_similar_words(char * str);
 
 int main() {
-    char word[WORD], choice;
+    char word[WORD] = { 0 }, choice = '\0';
 
     getword(word);
     scanf(" %c\n", &choice);
@@ -67,25 +67,21 @@ int get_line(char s[]) {
 
     for (i = 0; i < LINE; ++i)
     {
-        if (scanf("%c", &s[i]) == EOF)
+        if (scanf("%c", &(*(s + i))) == EOF)
         {
-            s[i] = '\0';
+            *(s + i) = '\0';
             break;
         }
 
-        if (s[i] == '\n')
+        if (*(s + i) == '\n')
         {
-            s[i] = '\0';
+            *(s + i) = '\0';
             break;
         }
     }
 
     if (i == LINE)
-        s[i - 1] = '\0';
-
-    
-    else if (s[i] == '\r')
-        s[i++] = '\0';
+        *(s + i - 1) = '\0';
 
     return i;
 }
@@ -105,21 +101,21 @@ int getword(char w[]) {
 
     for (i = 0; i < WORD; ++i)
     {
-        if (scanf("%c", &w[i]) == EOF)
+        if (scanf("%c", &(*(w + i))) == EOF)
         {
-            w[i] = '\0';
+            *(w + i) = '\0';
             break;
         }
 
-        if (w[i] == '\n' || w[i] == '\t' || w[i] == ' ')
+        if (*(w + i) == '\n' || *(w + i) == '\t' || *(w + i) == ' ')
         {
-            w[i] = '\0';
+            *(w + i)= '\0';
             break;
         }
     }
 
     if (i == WORD)
-        w[i - 1] = '\0';
+        *(w + i - 1) = '\0';
 
     return i;
 }
@@ -196,9 +192,9 @@ int similar(char *s, char *t, int n) {
 void print_lines(char * str) {
     char line[LINE] = { 0 };
 
-    while(get_line(line) != 0)
+    while(get_line(line))
     {
-        if (substring(line, str) != 0)
+        if (substring(line, str))
             printf("%s\n", line);
     }
 }
@@ -214,7 +210,7 @@ void print_lines(char * str) {
 void print_similar_words(char * str) {
     char word[WORD] = { 0 };
 
-    while(getword(word) != 0)
+    while(getword(word))
     {
         if (similar(word, str, 1) || similar(word, str, 0))
             printf("%s\n", word);
